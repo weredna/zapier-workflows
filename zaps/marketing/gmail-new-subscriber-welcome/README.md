@@ -21,8 +21,8 @@
 4) Turn on the Zap and add a test row.
 
 ## 🧪 Test data & mapping
-- `Email`: user@example.com
-- `FirstName`: Jamie
+- `Email`: andrew@andrewluxem.com
+- `FirstName`: Andrew
 
 ## 🛠 Troubleshooting
 - If the trigger doesn’t find rows, reselect the spreadsheet and worksheet.
