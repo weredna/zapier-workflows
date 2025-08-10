@@ -1,0 +1,24 @@
+{
+  "name": "Forms to Notion",
+  "trigger": {
+    "app": "google_forms",
+    "event": "new_response",
+    "config": {
+      "form_id": "YOUR_FORM_ID"
+    }
+  },
+  "steps": [
+    {
+      "app": "notion",
+      "event": "create_page",
+      "config": {
+        "database_id": "YOUR_DATABASE_ID",
+        "properties": {
+          "Name": "{{trigger.response.Name}}",
+          "Email": "{{trigger.response.Email}}",
+          "Feedback": "{{trigger.response.Feedback}}"
+        }
+      }
+    }
+  ]
+}
