@@ -1,0 +1,29 @@
+{
+  "name": "Slack Daily Digest",
+  "trigger": {
+    "app": "schedule_by_zapier",
+    "event": "every_day",
+    "config": {
+      "time": "09:00"
+    }
+  },
+  "steps": [
+    {
+      "app": "google_sheets",
+      "event": "find_many_spreadsheet_rows",
+      "config": {
+        "spreadsheet": "Daily Tasks",
+        "worksheet": "Tasks",
+        "conditions": "CreatedDate > Yesterday"
+      }
+    },
+    {
+      "app": "slack",
+      "event": "send_channel_message",
+      "config": {
+        "channel": "#daily-digest",
+        "text": "Here’s today’s update:\n{{#each steps[1].rows}}• {{Task}} (Owner: {{Owner}}, Due: {{DueDate}})\n{{/each}}"
+      }
+    }
+  ]
+}
