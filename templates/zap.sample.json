@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "zaps": [
+    {
+      "name": "Gmail: New Subscriber Welcome",
+      "description": "Sends a welcome email when a new row is added to Google Sheets.",
+      "trigger": {
+        "app": "google_sheets",
+        "event": "new_spreadsheet_row",
+        "config": {
+          "spreadsheet": "Subscribers",
+          "worksheet": "New"
+        }
+      },
+      "steps": [
+        {
+          "type": "action",
+          "app": "gmail",
+          "event": "send_email",
+          "config": {
+            "to": "{{trigger.row.Email}}",
+            "subject": "Welcome to the list!",
+            "body": "Glad you're here, {{trigger.row.FirstName}}."
+          }
+        }
+      ]
+    }
+  ]
+}
