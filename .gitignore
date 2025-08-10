@@ -1,0 +1,10 @@
+# Node/OS
+node_modules/
+.DS_Store
+Thumbs.db
+
+# Zap exports that contain account-wide bundles
+**/Zapfile.json
+
+# Private scratch
+scratch/
