@@ -1,0 +1,33 @@
+{
+  "version": "1.0.0",
+  "zaps": [
+    {
+      "name": "Gmail: New Subscriber Welcome",
+      "description": "Send a personalized welcome email when a new subscriber is added to the Google Sheets 'Subscribers' sheet.",
+      "trigger": {
+        "app": "google_sheets",
+        "event": "new_spreadsheet_row",
+        "config": {
+          "spreadsheet_name": "Subscribers",
+          "worksheet_name": "New"
+        }
+      },
+      "steps": [
+        {
+          "type": "action",
+          "app": "gmail",
+          "event": "send_email",
+          "config": {
+            "to": "{{trigger.row.Email}}",
+            "subject": "Welcome to the list!",
+            "body": "Hi {{trigger.row.FirstName}},\n\nThanks for subscribing! We’re excited to have you on board.\n\n— Your Company Team",
+            "from": "me"
+          }
+        }
+      ],
+      "tags": ["zapier", "gmail", "sheets", "welcome", "marketing"],
+      "created_by": "Andrew Luxem",
+      "last_updated": "2025-08-10"
+    }
+  ]
+}
